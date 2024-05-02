@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>News Aggregator</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-3">Latest News</h1>
+    {% for article in articles %}
+    <div class="card mb-3">
+        <img src="{{ article.image }}" class="card-img-top" alt="News Image">
+        <div class="card-body">
+            <h5 class="card-title">{{ article.title }}</h5>
+            <p class="card-text">{{ article.content | truncate(100, True, '...') }}</p>
+            <a href="{{ article.source_link }}" class="btn btn-primary">Read More</a>
+            <p class="card-text"><small class="text-muted">Published on {{ article.timestamp }}</small></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
